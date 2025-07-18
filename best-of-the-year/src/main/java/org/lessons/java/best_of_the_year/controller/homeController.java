@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/")
-public class homeController {
+public class HomeController {
 
     @GetMapping("/")
     public String home(@RequestParam(name = "name") String name, Model model) {
