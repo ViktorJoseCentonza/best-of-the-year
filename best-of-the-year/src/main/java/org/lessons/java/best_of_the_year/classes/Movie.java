@@ -28,6 +28,9 @@ public class Movie extends Media {
     }
 
     public static Movie getMovie(int i) {
+        if (i >= existingMovies.size() || i < 0) {
+            return null;
+        }
         return existingMovies.get(i);
     }
 

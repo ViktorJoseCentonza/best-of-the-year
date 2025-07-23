@@ -24,41 +24,27 @@ public class HomeController {
 
     @GetMapping("/movies")
     public String movies(Model model) {
-        model.addAttribute("movies", getBestMovies());
+        model.addAttribute("movies", Movie.getBest());
         return "movies";
-    }
-
-    private ArrayList<Movie> getBestMovies() {
-        return Movie.getBest();
     }
 
     @GetMapping("/movie/{id}")
     public String movie(@PathVariable int id, Model model) {
-        model.addAttribute("movie", returnMovie(id));
+        model.addAttribute("pageId", id);
+        model.addAttribute("movie", Movie.getMovie(id));
         return "movie";
-    }
-
-    private Movie returnMovie(int id) {
-        return Movie.getMovie(id);
     }
 
     @GetMapping("/songs")
     public String songs(Model model) {
-        model.addAttribute("songs", getBestSongs());
+        model.addAttribute("songs", Song.getBest());
         return "songs";
-    }
-
-    private ArrayList<Song> getBestSongs() {
-        return Song.getBest();
     }
 
     @GetMapping("/song/{id}")
     public String song(@PathVariable int id, Model model) {
-        model.addAttribute("song", returnSong(id));
+        model.addAttribute("pageId", id);
+        model.addAttribute("song", Song.getSong(id));
         return "song";
-    }
-
-    private Song returnSong(int id) {
-        return Song.getSong(id);
     }
 }

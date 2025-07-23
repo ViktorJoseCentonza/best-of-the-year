@@ -28,6 +28,9 @@ public class Song extends Media {
     }
 
     public static Song getSong(int i) {
+        if (i >= existingSongs.size() || i < 0) {
+            return null;
+        }
         return existingSongs.get(i);
     }
 

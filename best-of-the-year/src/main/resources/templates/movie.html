@@ -11,7 +11,8 @@
 <body>
     <header th:replace="~{fragments/header :: header}"></header>
     <main>
-        <h1 th:text="${movie}+ ' total likes: ' + ${movie.likes}"></h1>
+        <h1 th:text="${movie==null ? 'there is no movie with id '+ id : movie + ' total likes: ' + movie.likes}">
+        </h1>
     </main>
 
 </body>
