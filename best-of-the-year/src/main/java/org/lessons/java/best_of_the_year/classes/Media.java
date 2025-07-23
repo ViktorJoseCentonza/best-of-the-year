@@ -1,24 +1,17 @@
 package org.lessons.java.best_of_the_year.classes;
 
-import java.util.ArrayList;
-
 public class Media {
-    private int id;
     private String title;
     private int likes;
 
-    public Media(int id, String title) {
-        this.id = id;
+    public Media(String title) {
         this.title = title;
         this.likes = (int) (Math.random() * 101);
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
+    public Media(String title, int likes) {
+        this.title = title;
+        this.likes = likes;
     }
 
     public void setTitle(String title) {
@@ -29,6 +22,10 @@ public class Media {
         return title;
     }
 
+    public int getLikes() {
+        return this.likes;
+    }
+
     public void addLike() {
         this.likes++;
     }
@@ -37,32 +34,8 @@ public class Media {
         this.likes--;
     }
 
-    public static ArrayList<Media> getBestMedia(Media[] existingMedia) {
-
-        ArrayList<Media> bestMedia = new ArrayList<Media>();
-
-        for (int i = 0; i < existingMedia.length; i++) {
-            int j = 0;
-            if (bestMedia.size() == 0) {
-                bestMedia.add(existingMedia[i]);
-                continue;
-            }
-            do {
-
-                if (existingMedia[i].likes > bestMedia.get(j).likes && existingMedia[i] != bestMedia.get(j)) {
-                    bestMedia.add(j, existingMedia[i]);
-                    if (bestMedia.size() > 10) {
-                        bestMedia.remove(bestMedia.size() - 1);
-                    }
-                    break;
-                }
-                j++;
-            } while (j < bestMedia.size());
-            if (j == bestMedia.size() && bestMedia.size() < 10) {
-                bestMedia.add(bestMedia.size(), existingMedia[i]);
-            }
-        }
-
-        return bestMedia;
+    @Override
+    public String toString() {
+        return this.title;
     }
 }

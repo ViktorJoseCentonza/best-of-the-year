@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <th:block th:replace="~{fragments/head-css :: head-css}"></th:block>
+</head>
+
+<body>
+    <header th:replace="~{fragments/header :: header}"></header>
+    <main class="d-flex align-items-center flex-column flex-shrink">
+        <h2>Best songs</h2>
+
+        <ul th:each="song, stat : ${songs}" class="text-decoration-none m-0 p-0">
+            <a th:href="@{'/song/'+ ${song.id}}">
+                <li th:text="${song} +' total likes:' + ${song.likes}"
+                    th:class="'border border-2 border-dark list-group-item p-3'+ (!${stat.last} ? ' border-bottom-0' : '')">
+                </li>
+            </a>
+        </ul>
+
+
+    </main>
+</body>
+
+</html>

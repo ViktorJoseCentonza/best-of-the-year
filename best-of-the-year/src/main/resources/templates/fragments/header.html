@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>header-fragment</title>
+</head>
+
+<body>
+    <header th:fragment="header" class="d-flex justify-content-evenly border border-3 border-dark">
+
+        <a href="/?name=viktor" class="text-decoration-none border-end border-3 border-dark m-0">
+            <h1 class="text-dark px-3">Best of</h1>
+        </a>
+
+
+        <nav class="d-flex justify-content-evenly flex-grow-1">
+            <a href="/movies"
+                class="text-decoration-none fs-2 text-dark border border-2 border-dark rounded-4 px-1 my-1">Movies</a>
+            <a href="/songs"
+                class="text-decoration-none fs-2 text-dark border border-2 border-dark rounded-4 px-1 my-1">Songs</a>
+        </nav>
+    </header>
+
+</body>
+
+</html>
