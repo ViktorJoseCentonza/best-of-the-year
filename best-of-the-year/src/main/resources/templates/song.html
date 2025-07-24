@@ -10,8 +10,8 @@
 
 <body>
     <header th:replace="~{fragments/header :: header}"></header>
-    <main>
-        <h1 th:text="${song==null ?  'there is no song with id '+ id : song + ' likes:' + song.likes}"></h1>
+    <main class="d-flex justify-content-center">
+        <h1 class="m-4" th:text="${song==null ?  'there is no song with id '+ id : song + ' likes:' + song.likes}"></h1>
     </main>
 
 </body>
