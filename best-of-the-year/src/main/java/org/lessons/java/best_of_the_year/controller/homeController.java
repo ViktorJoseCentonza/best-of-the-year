@@ -2,6 +2,8 @@ package org.lessons.java.best_of_the_year.controller;
 
 import java.util.ArrayList;
 
+import org.lessons.java.best_of_the_year.BestOfTheYearApplication;
+import org.lessons.java.best_of_the_year.classes.Media;
 import org.lessons.java.best_of_the_year.classes.Movie;
 import org.lessons.java.best_of_the_year.classes.Song;
 import org.springframework.stereotype.Controller;
@@ -18,33 +20,49 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@RequestParam(required = false) String name, Model model) {
-        model.addAttribute("name", name);
+        if (name == null) {
+            model.addAttribute("name", "viktor");
+        } else {
+            model.addAttribute("name", name);
+        }
+
         return "home";
     }
 
     @GetMapping("/movies")
     public String movies(Model model) {
-        model.addAttribute("movies", Movie.getBest());
-        return "movies";
+        model.addAttribute("movies", BestOfTheYearApplication.getMovies());
+        return "movies/index";
     }
 
     @GetMapping("/movie/{id}")
     public String movie(@PathVariable int id, Model model) {
         model.addAttribute("pageId", id);
-        model.addAttribute("movie", Movie.getMovie(id));
-        return "movie";
+
+        for (Media m : BestOfTheYearApplication.mediaList) {
+            if (m.getId() == id) {
+                model.addAttribute("movie", m);
+            }
+        }
+        // todo implement notfound
+        return "movies/show";
     }
 
     @GetMapping("/songs")
     public String songs(Model model) {
-        model.addAttribute("songs", Song.getBest());
-        return "songs";
+        model.addAttribute("songs", BestOfTheYearApplication.getSongs());
+        return "songs/index";
     }
 
     @GetMapping("/song/{id}")
     public String song(@PathVariable int id, Model model) {
         model.addAttribute("pageId", id);
-        model.addAttribute("song", Song.getSong(id));
-        return "song";
+        for (Media m : BestOfTheYearApplication.mediaList) {
+            if (m.getId() == id) {
+                model.addAttribute("song", m);
+            }
+        }
+        // todo implement notfound
+        return "songs/show";
     }
 }

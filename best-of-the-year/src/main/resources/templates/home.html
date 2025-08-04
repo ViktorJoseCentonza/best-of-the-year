@@ -14,7 +14,7 @@
     <header th:replace="~{fragments/header :: header}"></header>
     <main class="d-flex flex-column align-items-center">
 
-        <h1 th:text="${name!=null ? 'Best of the year by ' + name : 'Best of the year by viktor'}" class="p-4" />
+        <h1 th:text="'Best of the year by ' + ${name}" class="p-4" />
 
         <div style="width: 500px; height: auto;">
             <img class="img-fluid"
